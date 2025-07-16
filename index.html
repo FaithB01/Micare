@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiCare Fashion House - Luxury Handbags</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fefefe;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #f8f0f5 0%, #ffffff 100%);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #d4669a;
+            text-decoration: none;
+            font-family: 'Georgia', serif;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #333;
+            font-size: 1rem;
+            display: block;
+            margin-top: -5px;
+            letter-spacing: 4px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #d4669a;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d4669a;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            padding: 8px 40px 8px 15px;
+            border: 2px solid #f0f0f0;
+            border-radius: 25px;
+            font-size: 14px;
+            width: 200px;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #d4669a;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #d4669a;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .wishlist-icon,
+        .cart-icon {
+            font-size: 1.5rem;
+            cursor: pointer;
+            position: relative;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .wishlist-icon:hover,
+        .cart-icon:hover {
+            color: #d4669a;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #d4669a;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f8f0f5 0%, #ffffff 50%, #f5e6f1 100%);
+            padding: 120px 0 80px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #d4669a 0%, #b8527d 100%);
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212, 102, 154, 0.3);
+        }
+
+        /* Filter Section */
+        .filter-section {
+            padding: 40px 0;
+            background: #f8f8f8;
+        }
+
+        .filter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-group label {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .filter-group select {
+            padding: 8px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 14px;
+            background: white;
+            cursor: pointer;
+        }
+
+        .filter-group select:focus {
+            outline: none;
+            border-color: #d4669a;
+        }
+
+        /* Featured Products */
+        .featured-products {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-actions {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover .product-actions {
+            opacity: 1;
+        }
+
+        .action-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-size: 16px;
+        }
+
+        .action-btn:hover {
+            background: #d4669a;
+            color: white;
+        }
+
+        .quick-view-btn {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            background: rgba(212, 102, 154, 0.9);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover .quick-view-btn {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            color: #d4669a;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .stars {
+            color: #ffc107;
+        }
+
+        .rating-text {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #d4669a 0%, #b8527d 100%);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .add-to-cart-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Enhanced Cart Modal */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .cart-overlay.show {
+            display: block;
+        }
+
+        .cart-modal {
+            position: fixed;
+            right: -500px;
+            top: 0;
+            width: 500px;
+            height: 100vh;
+            background: white;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+            transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-modal.open {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px;
+            border-bottom: 2px solid #f0f0f0;
+            background: linear-gradient(135deg, #f8f0f5 0%, #ffffff 100%);
+        }
+
+        .cart-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s ease;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-cart:hover {
+            color: #d4669a;
+            background: rgba(212, 102, 154, 0.1);
+        }
+
+        .cart-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-empty {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            margin-top: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cart-empty-icon {
+            font-size: 4rem;
+            color: #ddd;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 20px 0;
+            border-bottom: 1px solid #f0f0f0;
+            position: relative;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            font-size: 1rem;
+            color: #d4669a;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            background: #f0f0f0;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background: #d4669a;
+            color: white;
+        }
+
+        .quantity-display {
+            font-size: 1rem;
+            font-weight: 500;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .remove-item {
+            position: absolute;
+            top: 15px;
+            right: 0;
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .remove-item:hover {
+            color: #ff4444;
+        }
+
+        .cart-summary {
+            padding: 25px;
+            border-top: 2px solid #f0f0f0;
+            background: #f8f8f8;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #d4669a 0%, #b8527d 100%);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212, 102, 154, 0.3);
+        }
+
+        .continue-shopping {
+            width: 100%;
+            background: none;
+            border: 2px solid #d4669a;
+            color: #d4669a;
+            padding: 12px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .continue-shopping:hover {
+            background: #d4669a;
+            color: white;
+        }
+
+        /* Notification Toast */
+        .notification-toast {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateX(400px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1002;
+            max-width: 300px;
+        }
+
+        .notification-toast.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .notification-toast.error {
+            background: linear-gradient(135deg, #f44336 0%, #da190b 100%);
+        }
+
+        /* Quick View Modal */
+        .quick-view-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            width: 90%;
+            max-width: 800px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            z-index: 1003;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .quick-view-modal.show {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .quick-view-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        .quick-view-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .quick-view-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .quick-view-details h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .quick-view-price {
+            font-size: 1.6rem;
+            color: #d4669a;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .quick-view-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .quick-view-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .quick-view-actions button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .quick-add-cart {
+            background: linear-gradient(135deg, #d4669a 0%, #b8527d 100%);
+            color: white;
+        }
+
+        .quick-add-wishlist {
+            background: none;
+            border: 2px solid #d4669a;
+            color: #d4669a;
+        }
+
+        .quick-add-wishlist:hover {
+            background: #d4669a;
+            color: white;
+        }
+
+        .close-quick-view {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        .close-quick-view:hover {
+            color: #d4669a;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f0f5 0%, #ffffff 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .about-image {
+            height: 400px;
+            background: linear-gradient(135deg, #f8f0f5 0%, #ffffff 50%, #f5e6f1 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: #d4669a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M25 35h50v30H25z" fill="none" stroke="%23d4669a" stroke-width="2"/><path d="M35 35v-5c0-3 3-6 6-6h18c3 0 6 3 6 6v5" fill="none" stroke="%23d4669a" stroke-width="2"/><circle cx="30" cy="45" r="2" fill="%23d4669a"/><circle cx="70" cy="45" r="2" fill="%23d4669a"/></svg>') center/80px no-repeat;
+            opacity: 0.2;
+        }
+
+        /* Press Section */
+        .press-section {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .press-logos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+            align-items: center;
+        }
+
+        .press-logo {
+            height: 60px;
+            background: #f8f0f5;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #d4669a;
+            transition: transform 0.3s ease;
+        }
+
+        .press-logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: #d4669a;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #d4669a;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #555;
+            color: #ccc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .header-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .search-input {
+                width: 250px;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .press-logos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cart-modal {
+                width: 100%;
+                right: -100%;
+            }
+
+            .quick-view-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .quick-view-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                MiCare
+                <span>FASHION HOUSE</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#collection">Collection</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search handbags..." id="searchInput">
+                    <button class="search-btn" onclick="searchProducts()">🔍</button>
+                </div>
+                <div class="wishlist-icon" onclick="toggleWishlist()">❤️</div>
+                <div class="cart-icon" onclick="toggleCart()">
+                    🛍️
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <h1>Luxury Redefined</h1>
+            <p>Discover our exquisite collection of handcrafted leather handbags, designed for the sophisticated woman
+                who values timeless elegance and superior craftsmanship.</p>
+            <a href="#collection" class="cta-button">Explore Collection</a>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="filter-container">
+            <div class="filter-group">
+                <label>Category</label>
+                <select id="categoryFilter" onchange="filterProducts()">
+                    <option value="">All Categories</option>
+                    <option value="tote">Tote Bags</option>
+                    <option value="clutch">Clutches</option>
+                    <option value="satchel">Satchels</option>
+                    <option value="crossbody">Crossbody</option>
+                    <option value="briefcase">Briefcases</option>
+                    <option value="shoulder">Shoulder Bags</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Price Range</label>
+                <select id="priceFilter" onchange="filterProducts()">
+                    <option value="">All Prices</option>
+                    <option value="0-200">Under $200</option>
+                    <option value="200-300">$200 - $300</option>
+                    <option value="300-400">$300 - $400</option>
+                    <option value="400+">$400+</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Sort By</label>
+                <select id="sortFilter" onchange="filterProducts()">
+                    <option value="">Default</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="name">Name: A to Z</option>
+                    <option value="rating">Highest Rated</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products" id="collection">
+        <div class="container">
+            <h2 class="section-title">Featured Collection</h2>
+            <p class="section-subtitle">Each piece in our collection has been personally tailored for smart, confident
+                women who are looking for timeless and luxurious designs of superior quality.</p>
+
+            <div class="product-grid" id="productGrid">
+                <div class="product-card" data-category="tote" data-price="299" data-rating="4.8">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                            alt="Elegance Tote">
+                        <div class="product-actions">
+                            <button class="action-btn" onclick="addToWishlist('Elegance Tote')">❤️</button>
+                            <button class="action-btn" onclick="shareProduct('Elegance Tote')">📤</button>
+                        </div>
+                        <button class="quick-view-btn"
+                            onclick="openQuickView('Elegance Tote', 299, 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80', 'A timeless tote bag crafted from premium Italian leather, perfect for the modern professional woman. Features multiple compartments and adjustable straps.')">Quick
+                            View</button>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Elegance Tote</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">(4.8) 156 reviews</span>
+                        </div>
+                        <p class="product-price">$299</p>
+                        <p class="product-description">A timeless tote bag crafted from premium Italian leather, perfect
+                            for the modern professional woman.</p>
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Elegance Tote', 299, 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80')">Add
+                            to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="clutch" data-price="189" data-rating="4.6">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80"
+                            alt="Classic Clutch">
+                        <div class="product-actions">
+                            <button class="action-btn" onclick="addToWishlist('Classic Clutch')">❤️</button>
+                            <button class="action-btn" onclick="shareProduct('Classic Clutch')">📤</button>
+                        </div>
+                        <button class="quick-view-btn"
+                            onclick="openQuickView('Classic Clutch', 189, 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80', 'An elegant evening clutch that combines sophistication with functionality for special occasions. Made with finest materials and attention to detail.')">Quick
+                            View</button>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Classic Clutch</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-text">(4.6) 89 reviews</span>
+                        </div>
+                        <p class="product-price">$189</p>
+                        <p class="product-description">An elegant evening clutch that combines sophistication with
+                            functionality for special occasions.</p>
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Classic Clutch', 189, 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80')">Add
+                            to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="satchel" data-price="359" data-rating="4.9">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80"
+                            alt="Sophisticate Satchel">
+                        <div class="product-actions">
+                            <button class="action-btn" onclick="addToWishlist('Sophisticate Satchel')">❤️</button>
+                            <button class="action-btn" onclick="shareProduct('Sophisticate Satchel')">📤</button>
+                        </div>
+                        <button class="quick-view-btn"
+                            onclick="openQuickView('Sophisticate Satchel', 359, 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80', 'A structured satchel with modern design elements, ideal for everyday luxury and practicality. Features premium hardware and interior organization.')">Quick
+                            View</button>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Sophisticate Satchel</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">(4.9) 203 reviews</span>
+                        </div>
+                        <p class="product-price">$359</p>
+                        <p class="product-description">A structured satchel with modern design elements, ideal for
+                            everyday luxury and practicality.</p>
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Sophisticate Satchel', 359, 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80')">Add
+                            to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="crossbody" data-price="229" data-rating="4.7">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80"
+                            alt="Vintage Crossbody">
+                        <div class="product-actions">
+                            <button class="action-btn" onclick="addToWishlist('Vintage Crossbody')">❤️</button>
+                            <button class="action-btn" onclick="shareProduct('Vintage Crossbody')">📤</button>
+                        </div>
+                        <button class="quick-view-btn"
+                            onclick="openQuickView('Vintage Crossbody', 229, 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80', 'A versatile crossbody bag with vintage-inspired details, perfect for effortless style. Adjustable strap and multiple pockets for organization.')">Quick
+                            View</button>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Vintage Crossbody</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-text">(4.7) 124 reviews</span>
+                        </div>
+                        <p class="product-price">$229</p>
+                        <p class="product-description">A versatile crossbody bag with vintage-inspired details, perfect
+                            for effortless style.</p>
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Vintage Crossbody', 229, 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80')">Add
+                            to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="briefcase" data-price="449" data-rating="4.8">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                            alt="Executive Briefcase">
+                        <div class="product-actions">
+                            <button class="action-btn" onclick="addToWishlist('Executive Briefcase')">❤️</button>
+                            <button class="action-btn" onclick="shareProduct('Executive Briefcase')">📤</button>
+                        </div>
+                        <button class="quick-view-btn"
+                            onclick="openQuickView('Executive Briefcase', 449, 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80', 'A professional briefcase designed for the executive woman who demands style and functionality. Premium leather construction with laptop compartment.')">Quick
+                            View</button>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Executive Briefcase</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">(4.8) 67 reviews</span>
+                        </div>
+                        <p class="product-price">$449</p>
+                        <p class="product-description">A professional briefcase designed for the executive woman who
+                            demands style and functionality.</p>
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Executive Briefcase', 449, 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80')">Add
+                            to Cart</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="shoulder" data-price="279" data-rating="4.5">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
+                            alt="Luxury Shoulder Bag">
+                        <div class="product-actions">
+                            <button class="action-btn" onclick="addToWishlist('Luxury Shoulder Bag')">❤️</button>
+                            <button class="action-btn" onclick="shareProduct('Luxury Shoulder Bag')">📤</button>
+                        </div>
+                        <button class="quick-view-btn"
+                            onclick="openQuickView('Luxury Shoulder Bag', 279, 'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80', 'A refined shoulder bag with golden hardware, combining classic design with contemporary appeal. Spacious interior with premium lining.')">Quick
+                            View</button>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Luxury Shoulder Bag</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-text">(4.5) 98 reviews</span>
+                        </div>
+                        <p class="product-price">$279</p>
+                        <p class="product-description">A refined shoulder bag with golden hardware, combining classic
+                            design with contemporary appeal.</p>
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Luxury Shoulder Bag', 279, 'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80')">Add
+                            to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Our Story</h2>
+                    <p>Established in 2015, MiCare Fashion House is an independent luxury accessory label that breaks
+                        conventions in the world of handbag design.</p>
+                    <p>Taking inspiration from timeless elegance and contemporary style, MiCare fuses design, function,
+                        and fashion to produce a collection of beautiful, yet durable handbags and accessories.</p>
+                    <p>Our collection has been personally curated for smart, confident women who are looking for
+                        timeless and luxurious designs of superior quality that complement their sophisticated
+                        lifestyle.</p>
+                </div>
+                <div class="about-image">
+                    ✨
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Press Section -->
+    <section class="press-section">
+        <div class="container">
+            <h2 class="section-title">As Featured In</h2>
+            <div class="press-logos">
+                <div class="press-logo">VOGUE</div>
+                <div class="press-logo">HARPER'S BAZAAR</div>
+                <div class="press-logo">ELLE</div>
+                <div class="press-logo">TATLER</div>
+                <div class="press-logo">MARIE CLAIRE</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>Email: info@micarefashion.com</li>
+                        <li>Phone: +1 (555) 123-4567</li>
+                        <li>Address: 123 Fashion Ave, New York, NY 10001</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Care Instructions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>About MiCare</h3>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Craftsmanship</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Pinterest</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MiCare Fashion House. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Enhanced Cart Modal -->
+    <div class="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3 class="cart-title">Shopping Cart</h3>
+            <button class="close-cart" onclick="toggleCart()">×</button>
+        </div>
+        <div class="cart-content" id="cartContent">
+            <div class="cart-empty">
+                <div class="cart-empty-icon">🛍️</div>
+                <div>Your cart is empty</div>
+                <p style="color: #999; font-size: 0.9rem; margin-top: 10px;">Add some items to get started!</p>
+            </div>
+        </div>
+        <div class="cart-summary" id="cartSummary" style="display: none;">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">$0</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+            <button class="continue-shopping" onclick="toggleCart()">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="quick-view-modal" id="quickViewModal">
+        <button class="close-quick-view" onclick="closeQuickView()">×</button>
+        <div class="quick-view-content">
+            <div class="quick-view-image">
+                <img id="quickViewImage" src="" alt="">
+            </div>
+            <div class="quick-view-details">
+                <h3 id="quickViewName"></h3>
+                <div class="product-rating">
+                    <span class="stars">★★★★★</span>
+                    <span class="rating-text">(4.8) 156 reviews</span>
+                </div>
+                <p class="quick-view-price" id="quickViewPrice"></p>
+                <p class="quick-view-description" id="quickViewDescription"></p>
+                <div class="quick-view-actions">
+                    <button class="quick-add-cart" onclick="addToCartFromQuickView()">Add to Cart</button>
+                    <button class="quick-add-wishlist" onclick="addToWishlistFromQuickView()">Add to Wishlist</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="notification-toast" id="notificationToast"></div>
+
+    <script>
+        // Global variables
+        let cart = [];
+        let wishlist = [];
+        let currentQuickViewProduct = null;
+        let allProducts = [];
+
+        // Initialize products data
+        function initializeProducts() {
+            allProducts = [
+                {
+                    name: 'Elegance Tote',
+                    price: 299,
+                    category: 'tote',
+                    rating: 4.8,
+                    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+                    description: 'A timeless tote bag crafted from premium Italian leather, perfect for the modern professional woman.'
+                },
+                {
+                    name: 'Classic Clutch',
+                    price: 189,
+                    category: 'clutch',
+                    rating: 4.6,
+                    image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80',
+                    description: 'An elegant evening clutch that combines sophistication with functionality for special occasions.'
+                },
+                {
+                    name: 'Sophisticate Satchel',
+                    price: 359,
+                    category: 'satchel',
+                    rating: 4.9,
+                    image: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80',
+                    description: 'A structured satchel with modern design elements, ideal for everyday luxury and practicality.'
+                },
+                {
+                    name: 'Vintage Crossbody',
+                    price: 229,
+                    category: 'crossbody',
+                    rating: 4.7,
+                    image: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80',
+                    description: 'A versatile crossbody bag with vintage-inspired details, perfect for effortless style.'
+                },
+                {
+                    name: 'Executive Briefcase',
+                    price: 449,
+                    category: 'briefcase',
+                    rating: 4.8,
+                    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80',
+                    description: 'A professional briefcase designed for the executive woman who demands style and functionality.'
+                },
+                {
+                    name: 'Luxury Shoulder Bag',
+                    price: 279,
+                    category: 'shoulder',
+                    rating: 4.5,
+                    image: 'https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80',
+                    description: 'A refined shoulder bag with golden hardware, combining classic design with contemporary appeal.'
+                }
+            ];
+        }
+
+        // Owner notification system
+        function notifyOwner(action, productName, customerInfo = null) {
+            const timestamp = new Date().toLocaleString();
+            const message = {
+                action: action,
+                product: productName,
+                timestamp: timestamp,
+                customer: customerInfo || 'Anonymous Customer',
+                location: 'Nairobi, Kenya' // Based on user location
+            };
+
+            // Simulate sending to owner (in real app, this would be an API call)
+            console.log('📧 OWNER NOTIFICATION:', message);
+
+            // For demo purposes, show a brief notification
+            if (action === 'item_added') {
+                setTimeout(() => {
+                    console.log(`🔔 Owner Alert: Customer added "${productName}" to cart at ${timestamp}`);
+                }, 1000);
+            }
+        }
+
+        // Enhanced cart functionality
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            const overlay = document.querySelector('.cart-overlay');
+
+            if (modal.classList.contains('open')) {
+                modal.classList.remove('open');
+                overlay.classList.remove('show');
+            } else {
+                modal.classList.add('open');
+                overlay.classList.add('show');
+            }
+        }
+
+        function addToCart(name, price, image) {
+            const existingItem = cart.find(item => item.name === name);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, image, quantity: 1 });
+            }
+
+            updateCartDisplay();
+            updateCartCount();
+            showNotification(`${name} added to cart!`, 'success');
+
+            // Notify owner
+            notifyOwner('item_added', name, 'Customer from Nairobi');
+
+            // Auto-open cart for better UX
+            if (!document.getElementById('cartModal').classList.contains('open')) {
+                setTimeout(() => toggleCart(), 300);
+            }
+        }
+
+        function updateCartDisplay() {
+            const cartContent = document.getElementById('cartContent');
+            const cartSummary = document.getElementById('cartSummary');
+
+            if (cart.length === 0) {
+                cartContent.innerHTML = `
+                    <div class="cart-empty">
+                        <div class="cart-empty-icon">🛍️</div>
+                        <div>Your cart is empty</div>
+                        <p style="color: #999; font-size: 0.9rem; margin-top: 10px;">Add some items to get started!</p>
+                    </div>
+                `;
+                cartSummary.style.display = 'none';
+                return;
+            }
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            cartContent.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-name">${item.name}</h4>
+                        <p class="cart-item-price">${item.price}</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity('${item.name}', -1)">-</button>
+                            <span class="quantity-display">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateQuantity('${item.name}', 1)">+</button>
+                        </div>
+                                    <button class="remove-item" onclick="removeFromCart('${item.name}')">🗑️</button>
+                                </div>
+                            </div>
+                                                `).join('');
+            cartSummary.style.display = 'block';
+            document.getElementById('cartTotal').textContent = `$${total}`;
+        }
+
+        function updateCartCount() {
+            document.getElementById('cartCount').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+        }
+
+        function showNotification(message, type) {
+            const toast = document.getElementById('notificationToast');
+            toast.textContent = message;
+            toast.className = 'notification-toast show' + (type === 'error' ? ' error' : '');
+            setTimeout(() => {
+                toast.className = 'notification-toast';
+            }, 2000);
+        }
+
+        function updateQuantity(name, change) {
+            const item = cart.find(i => i.name === name);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(name);
+                } else {
+                    updateCartDisplay();
+                    updateCartCount();
+                }
+            }
+        }
+
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            updateCartDisplay();
+            updateCartCount();
+            showNotification(`${name} removed from cart.`, 'success');
+        }
+
+        function checkout() {
+            showNotification('Checkout is not implemented on Micare comming soon', 'error');
+        }
+
+        // Wishlist functionality
+        function addToWishlist(name) {
+            if (!wishlist.includes(name)) {
+                wishlist.push(name);
+                showNotification(`${name} added to wishlist!`, 'success');
+            } else {
+                showNotification(`${name} is already in your wishlist.`, 'error');
+            }
+        }
+
+        function toggleWishlist() {
+            showNotification('Wishlist is not implemented in this demo.', 'error');
+        }
+
+        // Quick View functionality
+        function openQuickView(name, price, image, description) {
+            currentQuickViewProduct = { name, price, image, description };
+            document.getElementById('quickViewImage').src = image;
+            document.getElementById('quickViewName').textContent = name;
+            document.getElementById('quickViewPrice').textContent = `$${price}`;
+            document.getElementById('quickViewDescription').textContent = description;
+            document.getElementById('quickViewModal').classList.add('show');
+        }
+
+        function closeQuickView() {
+            document.getElementById('quickViewModal').classList.remove('show');
+        }
+
+        function addToCartFromQuickView() {
+            if (currentQuickViewProduct) {
+                addToCart(currentQuickViewProduct.name, currentQuickViewProduct.price, currentQuickViewProduct.image);
+                closeQuickView();
+            }
+        }
+
+        function addToWishlistFromQuickView() {
+            if (currentQuickViewProduct) {
+                addToWishlist(currentQuickViewProduct.name);
+                closeQuickView();
+            }
+        }
+
+        // Share functionality
+        function shareProduct(name) {
+            showNotification(`Share "${name}" on social media!`, 'success');
+        }
+
+        // Search and filter functionality
+        function filterProducts() {
+            const category = document.getElementById('categoryFilter').value;
+            const price = document.getElementById('priceFilter').value;
+            const sort = document.getElementById('sortFilter').value;
+            let filtered = [...allProducts];
+
+            if (category) {
+                filtered = filtered.filter(p => p.category === category);
+            }
+
+            if (price) {
+                if (price === '0-200') filtered = filtered.filter(p => p.price < 200);
+                else if (price === '200-300') filtered = filtered.filter(p => p.price >= 200 && p.price < 300);
+                else if (price === '300-400') filtered = filtered.filter(p => p.price >= 300 && p.price < 400);
+                else if (price === '400+') filtered = filtered.filter(p => p.price >= 400);
+            }
+
+            if (sort) {
+                if (sort === 'price-low') filtered.sort((a, b) => a.price - b.price);
+                else if (sort === 'price-high') filtered.sort((a, b) => b.price - a.price);
+                else if (sort === 'name') filtered.sort((a, b) => a.name.localeCompare(b.name));
+                else if (sort === 'rating') filtered.sort((a, b) => b.rating - a.rating);
+            }
+
+            renderProducts(filtered);
+        }
+
+        function renderProducts(products) {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = products.map(product => `
+                                        <div class="product-card" data-category="${product.category}" data-price="${product.price}" data-rating="${product.rating}">
+                                            <div class="product-image">
+                                                <img src="${product.image}" alt="${product.name}">
+                                                <div class="product-actions">
+                                                    <button class="action-btn" onclick="addToWishlist('${product.name}')">❤️</button>
+                                                    <button class="action-btn" onclick="shareProduct('${product.name}')">📤</button>
+                                                </div>
+                                                <button class="quick-view-btn"
+                                                    onclick="openQuickView('${product.name}', ${product.price}, '${product.image}', '${product.description}')">Quick View</button>
+                                            </div>
+                                            <div class="product-info">
+                                                <h3 class="product-name">${product.name}</h3>
+                                                <div class="product-rating">
+                                                    <span class="stars">${product.rating >= 4.8 ? '★★★★★' : '★★★★☆'}</span>
+                                                    <span class="rating-text">(${product.rating})</span>
+                                                </div>
+                                                <p class="product-price">$${product.price}</p>
+                                                <p class="product-description">${product.description}</p>
+                                                <button class="add-to-cart-btn"
+                                                    onclick="addToCart('${product.name}', ${product.price}, '${product.image}')">Add to Cart</button>
+                                            </div>
+                                        </div>
+                                    `).join('');
+        }
+
+        function searchProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = allProducts.filter(p => p.name.toLowerCase().includes(query) || p.description.toLowerCase().includes(query));
+            renderProducts(filtered);
+        }
+
+        // Initialize on page load
+        window.onload = function () {
+            initializeProducts();
+            renderProducts(allProducts);
+            updateCartDisplay();
+            updateCartCount();
+        };
+    </script>
+</body>
+
+</html>
