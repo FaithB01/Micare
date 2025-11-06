@@ -93,6 +93,122 @@
             align-items: center;
         }
 
+        .admin-login-btn {
+            background: transparent;
+            border: 2px solid #d4669a;
+            color: #d4669a;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .admin-login-btn:hover {
+            background: #d4669a;
+            color: white;
+        }
+
+        .admin-login-btn i {
+            font-size: 1.2em;
+        }
+
+        .admin-login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .admin-login-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            animation: modalFade 0.3s ease;
+        }
+
+        @keyframes modalFade {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .admin-login-content h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .admin-login-content input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #eee;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .admin-login-content input:focus {
+            outline: none;
+            border-color: #d4669a;
+            box-shadow: 0 0 0 3px rgba(212, 102, 154, 0.1);
+        }
+
+        .login-btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .login-btn-group button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn-group .login-submit {
+            background: #d4669a;
+            color: white;
+        }
+
+        .login-btn-group .login-submit:hover {
+            background: #c55589;
+        }
+
+        .login-btn-group .login-cancel {
+            background: #f1f1f1;
+            color: #666;
+        }
+
+        .login-btn-group .login-cancel:hover {
+            background: #e5e5e5;
+        }
+
         .search-container {
             position: relative;
         }
@@ -1785,6 +1901,9 @@
         const ADMIN_PASSCODE = 'M!Car3@2025';
         let isAdminAuthenticated = false;
         let inactivityTimer;
+        let loginAttempts = 0;
+        const MAX_LOGIN_ATTEMPTS = 3;
+        let lockoutTimer = null;
 
         function showAdminLogin() {
             document.getElementById('adminLoginModal').style.display = 'flex';
@@ -1799,15 +1918,36 @@
         }
 
         function validateAdminLogin() {
+            if (lockoutTimer) {
+                showNotification('Too many failed attempts. Please wait before trying again.', 'error');
+                return;
+            }
+
             const enteredPasscode = document.getElementById('adminPasscode').value;
             if (enteredPasscode === ADMIN_PASSCODE) {
                 isAdminAuthenticated = true;
+                loginAttempts = 0;
                 closeAdminLogin();
                 openAdmin();
                 showNotification('Welcome to MiCare CMS!', 'success');
                 resetInactivityTimer();
+
+                // Hide the login button and show a logged-in state
+                document.getElementById('adminLoginBtn').innerHTML = '<i>✓</i> Logged In';
+                document.getElementById('adminLoginBtn').style.background = '#d4669a';
+                document.getElementById('adminLoginBtn').style.color = 'white';
             } else {
-                showNotification('Invalid passcode', 'error');
+                loginAttempts++;
+                if (loginAttempts >= MAX_LOGIN_ATTEMPTS) {
+                    lockoutTimer = setTimeout(() => {
+                        lockoutTimer = null;
+                        loginAttempts = 0;
+                        showNotification('Login attempts reset. You can try again.', 'success');
+                    }, 5 * 60 * 1000); // 5 minutes lockout
+                    showNotification('Too many failed attempts. Please wait 5 minutes.', 'error');
+                } else {
+                    showNotification(`Invalid passcode. ${MAX_LOGIN_ATTEMPTS - loginAttempts} attempts remaining.`, 'error');
+                }
             }
         }
 
