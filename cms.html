@@ -1526,13 +1526,104 @@
     <!-- Notification Toast -->
     <div class="notification-toast" id="notificationToast"></div>
 
+    <!-- New Product Form Modal -->
+    <div id="newProductModal" class="quick-view-modal" style="display: none;">
+        <button class="close-quick-view" onclick="closeNewProductForm()">×</button>
+        <div class="quick-view-content" style="max-width: 500px;">
+            <h3 style="margin-bottom: 20px;">Add New Product</h3>
+            <form id="newProductForm" onsubmit="createNewProduct(event)">
+                <div style="margin-bottom: 15px;">
+                    <label for="newProductName">Product Name:</label>
+                    <input type="text" id="newProductName" required style="width: 100%; padding: 8px;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="newProductPrice">Price ($):</label>
+                    <input type="number" id="newProductPrice" required min="0" step="0.01"
+                        style="width: 100%; padding: 8px;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="newProductCategory">Category:</label>
+                    <select id="newProductCategory" required style="width: 100%; padding: 8px;">
+                        <option value="tote">Tote</option>
+                        <option value="clutch">Clutch</option>
+                        <option value="satchel">Satchel</option>
+                        <option value="crossbody">Crossbody</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="newProductDescription">Description:</label>
+                    <textarea id="newProductDescription" required
+                        style="width: 100%; padding: 8px; min-height: 100px;"></textarea>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label for="newProductImage">Product Image:</label>
+                    <input type="file" id="newProductImage" accept="image/*" required
+                        style="width: 100%; padding: 8px;">
+                </div>
+                <button type="submit" class="admin-button" style="background-color: #4CAF50; width: 100%;">Create
+                    Product</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="adminLoginModal" class="quick-view-modal" style="display: none;">
+        <div class="quick-view-content" style="max-width: 400px;">
+            <h3 style="margin-bottom: 20px;">Admin Login</h3>
+            <div style="margin-bottom: 15px;">
+                <label for="adminPasscode">Enter Passcode:</label>
+                <input type="password" id="adminPasscode" style="width: 100%; padding: 8px; margin-top: 8px;">
+                <p style="color: #666; font-size: 0.9rem; margin-top: 8px;">Enter the admin passcode to access CMS</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button onclick="validateAdminLogin()" class="admin-button" style="flex: 1;">Login</button>
+                <button onclick="closeAdminLogin()" class="admin-button"
+                    style="background-color: #666; flex: 1;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="adminLoginModal" class="modal" style="display: none;">
+        <div class="modal-content" style="max-width: 400px;">
+            <h3 style="margin-bottom: 20px; color: #333;">Admin Login</h3>
+            <div style="margin-bottom: 20px;">
+                <label for="adminPasscode" style="display: block; margin-bottom: 8px;">Enter Admin Passcode:</label>
+                <input type="password" id="adminPasscode"
+                    style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;"
+                    placeholder="Enter passcode">
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button onclick="validateAdminLogin()" class="admin-button" style="flex: 1;">Login</button>
+                <button onclick="closeAdminLogin()" class="admin-button"
+                    style="background: #666; flex: 1;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div class="admin-login-modal" id="adminLoginModal">
+        <div class="admin-login-content">
+            <h3 style="margin-bottom: 20px;">Admin Login</h3>
+            <div>
+                <label for="adminPasscode">Enter Admin Passcode:</label>
+                <input type="password" id="adminPasscode" placeholder="Enter passcode">
+            </div>
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                <button onclick="validateAdminLogin()" class="admin-button" style="flex: 1;">Login</button>
+                <button onclick="closeAdminLogin()" class="admin-button"
+                    style="background: #666; flex: 1;">Cancel</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Admin CMS floating button and panel -->
     <button class="admin-btn" id="adminBtn" title="Open CMS">✎</button>
 
     <div class="admin-panel" id="adminPanel" aria-hidden="true">
         <h3>Site CMS — Edit Products</h3>
 
-        <!-- <div id="adminHelp"
+        <div id="adminHelp"
             style="margin-bottom:12px; padding:10px; background:#faf7fb; border-radius:8px; border:1px solid #f0e6ef;">
             <strong>Quick help</strong>
             <ul style="margin-top:6px; margin-left:16px; color:#444; font-size:0.95rem;">
@@ -1542,11 +1633,14 @@
                 <li>Click <em>Save Changes</em> to persist edits to your browser (localStorage).</li>
                 <li>Use <em>Export JSON</em> to download your product data or <em>Import JSON</em> to load from a file.
                 </li>
+                <li>Click <em>Add New Product</em> to create a new product entry.</li>
                 <li><strong>Reset to Defaults</strong> clears saved edits and restores the original demo products.</li>
             </ul>
-        </div> -->
+        </div>
 
         <div style="display:flex; gap:12px; align-items:center; margin-bottom:12px;">
+            <button onclick="showNewProductForm()" class="admin-button" style="background-color: #4CAF50;">Add New
+                Product</button>
             <div style="flex:1">
                 <input type="password" id="passcodeInput" placeholder="Set admin passcode (optional)"
                     style="width:100%; padding:8px; border-radius:8px; border:1px solid #ddd">
@@ -1560,7 +1654,7 @@
         <div id="adminList"></div>
 
         <div class="admin-footer">
-            <!-- <button class="btn ghost" id="exportBtn">Export JSON</button> -->
+            <button class="btn ghost" id="exportBtn">Export JSON</button>
             <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
                 <label style="display:flex; gap:6px; align-items:center; font-size:0.95rem;">
                     <input type="checkbox" id="useServerCheckbox">Use server storage
@@ -1687,8 +1781,42 @@
             showNotification('CMS: Reset to default products', 'success');
         }
 
+        // Admin Authentication System
+        const ADMIN_PASSCODE = 'M!Car3@2025';
+        let isAdminAuthenticated = false;
+        let inactivityTimer;
+
+        function showAdminLogin() {
+            document.getElementById('adminLoginModal').style.display = 'flex';
+            const input = document.getElementById('adminPasscode');
+            input.value = '';
+            input.focus();
+        }
+
+        function closeAdminLogin() {
+            document.getElementById('adminLoginModal').style.display = 'none';
+            document.getElementById('adminPasscode').value = '';
+        }
+
+        function validateAdminLogin() {
+            const enteredPasscode = document.getElementById('adminPasscode').value;
+            if (enteredPasscode === ADMIN_PASSCODE) {
+                isAdminAuthenticated = true;
+                closeAdminLogin();
+                openAdmin();
+                showNotification('Welcome to MiCare CMS!', 'success');
+                resetInactivityTimer();
+            } else {
+                showNotification('Invalid passcode', 'error');
+            }
+        }
+
         // Admin UI helpers
         function openAdmin() {
+            if (!isAdminAuthenticated) {
+                showAdminLogin();
+                return;
+            }
             document.getElementById('adminPanel').classList.add('show');
             document.getElementById('adminPanel').setAttribute('aria-hidden', 'false');
         }
@@ -1697,6 +1825,22 @@
             document.getElementById('adminPanel').classList.remove('show');
             document.getElementById('adminPanel').setAttribute('aria-hidden', 'true');
         }
+
+        // Auto-logout after 30 minutes of inactivity
+        function resetInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                if (isAdminAuthenticated) {
+                    isAdminAuthenticated = false;
+                    closeAdmin();
+                    showNotification('Logged out due to inactivity', 'error');
+                }
+            }, 30 * 60 * 1000); // 30 minutes
+        }
+
+        // Track user activity
+        document.addEventListener('mousemove', resetInactivityTimer);
+        document.addEventListener('keypress', resetInactivityTimer);
 
         function renderAdminList() {
             const list = document.getElementById('adminList');
@@ -2115,17 +2259,17 @@
             updateCartDisplay();
             updateCartCount();
 
-            // Admin button with PBKDF2 passcode protection
-            document.getElementById('adminBtn').addEventListener('click', async () => {
-                const storedHash = localStorage.getItem('micare_cms_passhash');
-                const storedSalt = localStorage.getItem('micare_cms_salt');
-                if (storedHash && storedSalt) {
-                    // show modal and wait for submission
-                    showModal();
+            // Admin button click handler
+            document.getElementById('adminBtn').addEventListener('click', () => {
+                if (!isAdminAuthenticated) {
+                    showAdminLogin();
                 } else {
-                    // no passcode set, toggle admin directly
                     const panel = document.getElementById('adminPanel');
-                    if (panel.classList.contains('show')) closeAdmin(); else openAdmin();
+                    if (panel.classList.contains('show')) {
+                        closeAdmin();
+                    } else {
+                        openAdmin();
+                    }
                 }
             });
 

@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Elegance Tote",
+    "price": 299,
+    "category": "tote",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+    "description": "A timeless tote bag crafted from premium Italian leather, perfect for the modern professional woman."
+  },
+  {
+    "name": "Classic Clutch",
+    "price": 189,
+    "category": "clutch",
+    "rating": 4.6,
+    "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80",
+    "description": "An elegant evening clutch that combines sophistication with functionality for special occasions."
+  },
+  {
+    "name": "Sophisticate Satchel",
+    "price": 359,
+    "category": "satchel",
+    "rating": 4.9,
+    "image": "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80",
+    "description": "A structured satchel with modern design elements, ideal for everyday luxury and practicality."
+  },
+  {
+    "name": "Vintage Crossbody",
+    "price": 229,
+    "category": "crossbody",
+    "rating": 4.7,
+    "image": "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80",
+    "description": "A versatile crossbody bag with vintage-inspired details, perfect for effortless style."
+  },
+  {
+    "name": "Executive Briefcase",
+    "price": 449,
+    "category": "briefcase",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+    "description": "A professional briefcase designed for the executive woman who demands style and functionality."
+  },
+  {
+    "name": "Luxury Shoulder Bag",
+    "price": 279,
+    "category": "shoulder",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
+    "description": "A refined shoulder bag with golden hardware, combining classic design with contemporary appeal."
+  }
+]
